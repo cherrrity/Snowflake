@@ -14,6 +14,8 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2F25767406C14603A7C421BC /* NanumMyeongjo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4848C9D7C0A84772970A4296 /* NanumMyeongjo.ttf */; };
 		6172F2D35A4C3AA820D92908 /* libPods-Snowflake.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6423831EA8574132BED9D8CC /* libPods-Snowflake.a */; };
+		689E201B2756A53F0070E42E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 689E201A2756A53F0070E42E /* GoogleService-Info.plist */; };
+		689E201C2756A53F0070E42E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 689E201A2756A53F0070E42E /* GoogleService-Info.plist */; };
 		7DCD09DE91754718A0BC100A /* NanumMyeongjoBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 825E60BB4B9048C38E866E8E /* NanumMyeongjoBold.ttf */; };
 		7EF68E3733C33B6898317E18 /* libPods-Snowflake-SnowflakeTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ABFE59519B596E51CEFDCCC0 /* libPods-Snowflake-SnowflakeTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
@@ -45,6 +47,7 @@
 		393C6697C8B14F958EBEDA82 /* -apple-system.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "-apple-system.ttf"; path = "../src/assets/fonts/-apple-system.ttf"; sourceTree = "<group>"; };
 		4848C9D7C0A84772970A4296 /* NanumMyeongjo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = NanumMyeongjo.ttf; path = ../src/assets/fonts/NanumMyeongjo.ttf; sourceTree = "<group>"; };
 		6423831EA8574132BED9D8CC /* libPods-Snowflake.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Snowflake.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		689E201A2756A53F0070E42E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6C97AB639B58BBB4B15BBE30 /* Pods-Snowflake-SnowflakeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Snowflake-SnowflakeTests.debug.xcconfig"; path = "Target Support Files/Pods-Snowflake-SnowflakeTests/Pods-Snowflake-SnowflakeTests.debug.xcconfig"; sourceTree = "<group>"; };
 		6EAF85904B054D3DB96AD32A /* NanumGothic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = NanumGothic.ttf; path = ../src/assets/fonts/NanumGothic.ttf; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Snowflake/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -96,6 +99,7 @@
 		13B07FAE1A68108700A75B9A /* Snowflake */ = {
 			isa = PBXGroup;
 			children = (
+				689E201A2756A53F0070E42E /* GoogleService-Info.plist */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -258,6 +262,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				689E201C2756A53F0070E42E /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,6 +271,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
+				689E201B2756A53F0070E42E /* GoogleService-Info.plist in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				06C0BA043EF549C79F9B995B /* -apple-system.ttf in Resources */,
 				F1CD62B6399D405EAD56034B /* NanumGothic.ttf in Resources */,
@@ -588,7 +594,7 @@
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -654,7 +660,7 @@
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
