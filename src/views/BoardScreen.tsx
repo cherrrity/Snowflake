@@ -1,17 +1,34 @@
 
-import React, { Component, useCallback  } from 'react';
+import React, { Component, useCallback, useLayoutEffect, useState  } from 'react';
 import { StyleSheet, View, TouchableOpacity, ScrollView } from 'react-native';
 import { TextInput } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {Board, Text} from "../components/theme";
-import { useNavigation } from "@react-navigation/native";
+import {NavigationScreenProp, NavigationState} from "react-navigation";
+import { useNavigation, useRoute, NavigatorScreenParams} from "@react-navigation/native";
+import { indigo100 } from 'react-native-paper/lib/typescript/styles/colors';
+
+interface NavigationParams {
+  text: string;
+}
+
+type Navigation = NavigationScreenProp<NavigationState, NavigationParams>;
+
+interface Props {
+  navigation: Navigation;
+}
 
 export const BoardScreen = () => {
   const navigation = useNavigation();
+  const route = useRoute();
+  const title = route.params? route.params.headertitle : "";
 
+  navigation.setOptions({title: title});
+  
     const goDetail = useCallback( ()=>{
-      navigation.navigate("게시글내용");
+      navigation.navigate("게시글내용", {headertitle: title});
   },[]);
+
   return (
     <ScrollView>
       <View>
@@ -51,8 +68,11 @@ export const BoardScreen = () => {
 const LoginScreenStyles = StyleSheet.create({
   view : {width:"100%", flexDirection:"column"},
   box :{flexDirection:'row', justifyContent:'space-between', alignItems: 'center'},
-  category : {width:50, alignContent:"center", marginBottom:5, color:"#888888", fontWeight:"bold", backgroundColor:"lavender", paddingHorizontal:10, paddingVertical:3, borderRadius:10},
+
+  category_box : {flexWrap:'wrap', marginTop:8, width: "70%", flexDirection:"row", justifyContent:"center", alignItems:"center", alignContent:"center"},
+  category : {width:50, alignContent:"center", alignSelf:"stretch", marginVertical:3, color:"#888888", fontWeight:"bold", backgroundColor:"lavender", paddingHorizontal:10, paddingVertical:3, borderWidth:0.8, borderColor:"#b4b4de", borderRadius:10, marginHorizontal:2},
   category_text : {fontSize:10, color:"#888888"},
+
   title : {fontSize:18, fontWeight:'bold', overflow:'hidden'},
   time : {fontSize:12, marginTop:5, color:"#888888"},
   context : {fontSize:15, marginTop:15, color:"#666666", overflow:'hidden', textAlign:"justify", lineHeight:17},

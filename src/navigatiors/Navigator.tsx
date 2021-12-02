@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import {Text} from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createDrawerNavigator } from "@react-navigation/drawer";
@@ -8,27 +9,18 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import {MainScreen, RankScreen, MyScreen, BoardScreen, SettingScreen, FontScreen, ThemeScreen, BoardListScreen, BoardDetailScreen} from '../views';
 import Icon from "react-native-vector-icons/MaterialIcons";
 import { Board } from "../components/theme";
-import DrawerContent from "./DrawerContent"
+import { Logout } from "../service/Login";
+import { StackRouter } from "@react-navigation/routers";
 
-const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
 
-export function BoardListDrawerNavigator(){
-    return (
-        // 게시판 이름 받아서 name? 대신 출력해야 함
-        <Drawer.Navigator drawerContent = {(props) =>
-            <DrawerContent {...props}/>}>
-        </Drawer.Navigator>
-        );
-}
-
 export function BoardNavigator(){
     return (
         // 게시판 이름 받아서 name? 대신 출력해야 함
-    <Stack.Navigator>
-        <Stack.Screen name = "목록" component={BoardListScreen}></Stack.Screen>
+    <Stack.Navigator initialRouteName="게시판목록">
+        <Stack.Screen name = "게시판목록" options={{headerTitle:"게시판 목록"}} component={BoardListScreen}></Stack.Screen>
         <Stack.Screen name = "게시판" component={BoardScreen}></Stack.Screen>
         <Stack.Screen name = "게시글내용" component={BoardDetailScreen}></Stack.Screen>
     </Stack.Navigator>);
@@ -48,26 +40,26 @@ export function MainBottomNavigator(){
     <Tab.Navigator screenOptions={({route})=>({
         tabBarIcon:({focused, color, size}) => {
             let iconName:string = '';
-            if(route.name === "홈") {
+            if(route.name === "home") {
                 iconName = 'home'
-               } else if(route.name === '랭킹') {
+               } else if(route.name === 'rank') {
                 iconName = 'emoji-events'
-               } else if (route.name === '게시판') {
+               } else if (route.name === 'board') {
                 iconName = 'forum'
                } else if (route.name === 'My') {
                 iconName = 'account-circle'
-               } else if (route.name === '설정') {
+               } else if (route.name === 'setting') {
                 iconName = 'tune'
                }
-               return <Icon name={iconName} size={size} color={color} />;
+               return <Icon name={iconName} size={size} color={color} />
             }
     })}
     >
-        <Tab.Screen name = "홈" component={MainScreen}/>
-        <Tab.Screen name = "랭킹" component={RankScreen}/>
-        <Tab.Screen name = "게시판" component={BoardNavigator} options={{headerShown:false}}/>
-        <Tab.Screen name = "My" component={MyScreen}/>
-        <Tab.Screen name = "설정" component={SettingNavigator} options={{headerShown:false}}/>
+        <Tab.Screen name = "home" options={{title:"홈"}} component={MainScreen}/>
+        <Tab.Screen name = "rank" options={{title:"랭크"}} component={RankScreen}/>
+        <Tab.Screen name = "board" options={{title:"게시판", headerShown:false}} component={BoardNavigator}/>
+        <Tab.Screen name = "My" options={{headerRight: () => (<Text style={{marginRight:15}} onPress={Logout}>로그아웃</Text>), }} component={MyScreen}/>
+        <Tab.Screen name = "setting" options={{title:"설정", headerShown:false}} component={SettingNavigator} />
     </Tab.Navigator>
     );
 }

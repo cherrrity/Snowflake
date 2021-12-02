@@ -4,10 +4,14 @@ import { StyleSheet, View, TouchableOpacity } from 'react-native';
 import { TextInput } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {Board, Text} from "../components/theme";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import { BoardScreen, ThemeScreen } from '.';
 
 export const BoardDetailScreen = () => {
+  const navigation = useNavigation();
+  const route = useRoute();
+  navigation.setOptions({title: route.params.headertitle});
+
   return (
     <View>
       <View>
@@ -58,7 +62,7 @@ export const BoardDetailScreen = () => {
 const LoginScreenStyles = StyleSheet.create({
   view : {width:"100%", flexDirection:"column"},
   box :{flexDirection:'row', justifyContent:'space-between', alignItems: 'center'},
-  category : {width:50, alignContent:"center", marginBottom:5, color:"#888888", fontWeight:"bold", backgroundColor:"lavender", paddingHorizontal:10, paddingVertical:3, borderRadius:10},
+  category : {width:50, alignContent:"center", alignSelf:"stretch", marginVertical:3, color:"#888888", fontWeight:"bold", backgroundColor:"lavender", paddingHorizontal:10, paddingVertical:3, borderWidth:0.8, borderColor:"#b4b4de", borderRadius:10, marginHorizontal:2},
   category_text : {fontSize:10, color:"#888888"},
   title : {fontSize:18, fontWeight:'bold', overflow:'hidden'},
   time : {fontSize:12, marginTop:5, color:"#888888"},
